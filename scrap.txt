@@ -1,0 +1,5 @@
+json_string_for_new_game = '{"name": "Tomb Raider Extreme","release_date": "2018-09-21T21:24:15.266686Z", "game_category": "3D RPG", "played": false}'
+
+[{"pk":2,"name":"Angry Birds RPG","release_date":"2018-09-21T21:24:15.266686Z","game_category":"3D RPG","played":false},
+{"pk":1,"name":"Smurfs Jungle","release_date":"2018-09-21T21:24:15.266686Z","game_category":"2d mobile arcade","played":false},
+{"pk":3,"name":"Tomb Raider Extreme","release_date":"2018-09-21T21:24:15.266686Z","game_category":"3D RPG","played":false}]
