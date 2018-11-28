@@ -23,12 +23,13 @@ def game_list(request):
         games_serializer = GameSerializer(games, many=True)
         return JSONResponse(games_serializer.data)
     elif request.method == 'POST':
-        game_data = JSONParser.parse(request)
+        game_data = JSONParser().parse(request)
         games_serializer = GameSerializer(data=game_data)
         if games_serializer.is_valid():
             games_serializer.save()
             return JSONResponse(games_serializer.data, status=status.HTTP_201_CREATED)
         return JSONResponse(games_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @csrf_exempt
 def game_detail(request, pk):
