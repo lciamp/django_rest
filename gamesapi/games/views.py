@@ -22,12 +22,15 @@ def game_list(request):
         games = Game.objects.all()
         games_serializer = GameSerializer(games, many=True)
         return JSONResponse(games_serializer.data)
+
     elif request.method == 'POST':
         game_data = JSONParser().parse(request)
         games_serializer = GameSerializer(data=game_data)
+
         if games_serializer.is_valid():
             games_serializer.save()
             return JSONResponse(games_serializer.data, status=status.HTTP_201_CREATED)
+
         return JSONResponse(games_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -42,7 +45,7 @@ def game_detail(request, pk):
         games_serializer = GameSerializer(game)
         return JSONResponse(games_serializer.data)
 
-    elif request.method == 'POST':
+    elif request.method == 'PUT':
         game_data = JSONParser().parse(request)
         games_serializer = GameSerializer(game, data=game_data)
         if games_serializer.is_valid():
@@ -53,4 +56,3 @@ def game_detail(request, pk):
     elif request.method == 'DELETE':
         game.delete()
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-
